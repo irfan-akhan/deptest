@@ -1,5 +1,5 @@
 import dbConnect from '../../utils/db';
-import Post from '../api/post.model';
+import Post from '../api/posts/post.model';
 
 dbConnect();
 
