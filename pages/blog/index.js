@@ -41,7 +41,7 @@ export const getStaticProps = async (ctx) => {
 	// 	console.log(error);
 	// }
 	const response = await Post.find().exec();
-	const data = await response.json();
+	const data = JSON.parse(response);
 	console.log(data);
 	return {
 		props: {
