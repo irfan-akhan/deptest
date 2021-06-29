@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -14,10 +15,11 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				<img
+				<Image
 					src='/assets/images/shuttle.png'
-					style={{ width: '30%' }}
-				></img>
+					width={300}
+					height={100}
+				/>
 				<h1>TEST with github integration</h1>
 			</main>
 		</div>
