@@ -22,13 +22,10 @@ export const getStaticProps = async (ctx) => {
 	let connection = {};
 
 	try {
-		let db = await mongoose.connect(
-			'mongodb+srv://irfan:@Shuttlelane@cluster0.zkded.mongodb.net/shuttlelane?retryWrites=true&w=majority',
-			{
-				useNewUrlParser: true,
-				useUnifiedTopology: true,
-			}
-		);
+		let db = await mongoose.connect(process.env.dbUrl, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		});
 		connection.isConnected = db.connections[0].readyState;
 		if (connection.isConnected) {
 			const posts = await Post.find().exec();
