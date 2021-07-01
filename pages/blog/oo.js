@@ -1,10 +1,3 @@
-import BlogCard from '../../components/BlogCard';
-import BlogAside from '../../components/BlogAside';
-import blog from '../../styles/Blog.module.css';
-import fetch from 'isomorphic-fetch';
-
-import { Grid } from '@material-ui/core';
-
 const BlogList = ({ data }) => {
 	let posts = [];
 	if (data) {
@@ -18,18 +11,10 @@ const BlogList = ({ data }) => {
 					background: '#f8f8f8',
 					width: '100vw',
 				}}
-				className={blog.blogMain}
 			>
-				<Grid container spacing={5} className={blog.cards}>
-					{posts?.map((post) => {
-						return (
-							<Grid key={post._id} item xs={4}>
-								<BlogCard post={post} />
-							</Grid>
-						);
-					})}
-				</Grid>
-				<BlogAside />
+				{posts?.map((post, idx) => {
+					return <h1 key={idx}>{post._id}</h1>;
+				})}
 			</section>
 		</>
 	);
@@ -48,7 +33,7 @@ export const getServerSideProps = async () => {
 			},
 		};
 	} catch (error) {
-		console.log('failed getting data: ', error);
+		console.log('Db failed: ', error);
 		return {
 			props: {
 				data: { heading: 'Cant find' },
@@ -56,5 +41,4 @@ export const getServerSideProps = async () => {
 		};
 	}
 };
-
 export default BlogList;
