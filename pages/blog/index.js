@@ -52,14 +52,12 @@ const BlogList = ({ posts }) => {
 // };
 export const getServerSideProps = async () => {
 	try {
-		const res = await fetch(
-			`http://deploymenttest-g51fp68us-irfan-akhan.vercel.app/api/post`
-		);
+		const res = await fetch(`http://localhost:3000/api/post`);
 		const data = await res.json();
 		console.log('getting data', data);
 		return {
 			props: {
-				posts: JSON.stringify(data),
+				posts: data,
 			},
 		};
 	} catch (error) {
