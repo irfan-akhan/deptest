@@ -19,9 +19,10 @@ const BlogList = ({ data }) => {
 					width: '100vw',
 				}}
 			>
-				{posts?.map((post, idx) => {
+				{/* {posts?.map((post, idx) => {
 					return <h1 key={idx}>{post.heading}</h1>;
-				})}
+				})} */}
+				<h1>{posts?.length}</h1>
 			</section>
 		</>
 	);
