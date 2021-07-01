@@ -15,7 +15,7 @@ const BlogList = ({ posts }) => {
 					width: '100vw',
 				}}
 			>
-				{JSON.parse(posts)?.map((post, idx) => {
+				{posts?.map((post, idx) => {
 					return <h1 key={idx}>{post.heading}</h1>;
 				})}
 			</section>
