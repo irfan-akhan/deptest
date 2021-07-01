@@ -59,7 +59,7 @@ export const getServerSideProps = async () => {
 		const res = await fetch(
 			`http://deploymenttest-g51fp68us-irfan-akhan.vercel.app/api/post`
 		);
-		// const data = await res.json();
+		const data = await res.json();
 		console.log('getting data', data);
 		return {
 			props: {
