@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 import Post from '../api/post/post.model';
 
+const mode = {
+	dev: true,
+};
+
 const BlogList = ({ posts }) => {
 	return (
 		<>
@@ -19,43 +23,24 @@ const BlogList = ({ posts }) => {
 	);
 };
 
-export const getStaticProps = async (ctx) => {
-	let connection = {};
+// export const getStaticProps = async (ctx) => {
+// 	let connection = {};
 
-	try {
-		let db = await mongoose.connect(process.env.dbUrl, {
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-		});
-		connection.isConnected = db.connections[0].readyState;
-		if (connection.isConnected) {
-			const posts = await Post.find().exec();
-			console.log('getting data', posts);
-			return {
-				props: {
-					posts: JSON.stringify(posts),
-				},
-			};
-		}
-	} catch (error) {
-		console.log('Db failed: ', error);
-		return {
-			props: {
-				posts: { heading: 'Cant find' },
-			},
-		};
-	}
-};
-// export const getServerSideProps = async () => {
 // 	try {
-// 		const res = await fetch('http://localhost:3000/api/post');
-// 		const data = await res.json();
-// 		console.log('getting data', data);
-// 		return {
-// 			props: {
-// 				posts: JSON.stringify(data),
-// 			},
-// 		};
+// 		let db = await mongoose.connect(process.env.dbUrl, {
+// 			useNewUrlParser: true,
+// 			useUnifiedTopology: true,
+// 		});
+// 		connection.isConnected = db.connections[0].readyState;
+// 		if (connection.isConnected) {
+// 			const posts = await Post.find().exec();
+// 			console.log('getting data', posts);
+// 			return {
+// 				props: {
+// 					posts: JSON.stringify(posts),
+// 				},
+// 			};
+// 		}
 // 	} catch (error) {
 // 		console.log('Db failed: ', error);
 // 		return {
@@ -65,4 +50,25 @@ export const getStaticProps = async (ctx) => {
 // 		};
 // 	}
 // };
+export const getServerSideProps = async () => {
+	try {
+		const res = await fetch(
+			`http://deploymenttest-g51fp68us-irfan-akhan.vercel.app/api/post`
+		);
+		const data = await res.json();
+		console.log('getting data', data);
+		return {
+			props: {
+				posts: JSON.stringify(data),
+			},
+		};
+	} catch (error) {
+		console.log('Db failed: ', error);
+		return {
+			props: {
+				posts: { heading: 'Cant find' },
+			},
+		};
+	}
+};
 export default BlogList;
