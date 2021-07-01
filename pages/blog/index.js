@@ -19,10 +19,9 @@ const BlogList = ({ data }) => {
 					width: '100vw',
 				}}
 			>
-				{/* {posts?.map((post, idx) => {
+				{posts?.map((post, idx) => {
 					return <h1 key={idx}>{post.heading}</h1>;
-				})} */}
-				<h1>{posts?.length}</h1>
+				})}
 			</section>
 		</>
 	);
@@ -60,7 +59,7 @@ export const getServerSideProps = async () => {
 		const res = await fetch(
 			`http://deploymenttest-g51fp68us-irfan-akhan.vercel.app/api/post`
 		);
-		const data = await res.json();
+		// const data = await res.json();
 		console.log('getting data', data);
 		return {
 			props: {

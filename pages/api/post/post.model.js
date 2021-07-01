@@ -13,7 +13,10 @@ const postSchema = new Schema({
 		enum: ['draft', 'published'],
 		default: 'draft',
 	},
-
+	image: {
+		data: Buffer,
+		contentType: String,
+	},
 	postDescription: {
 		type: String,
 		require: true,
@@ -27,6 +30,11 @@ const postSchema = new Schema({
 		type: Date,
 		default: null,
 	},
+	createdBy: {
+		type: mongoose.SchemaTypes.ObjectId,
+		ref: 'user',
+		// required: true,
+	},
 });
-const Post = mongoose.models?.post || mongoose.model('post', postSchema);
+const Post = mongoose.models.post || mongoose.model('post', postSchema);
 module.exports = Post;
