@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-import Post from '../api/post.model';
+import Post from '../api/post/post.model';
+
 const BlogList = ({ posts }) => {
 	return (
 		<>
@@ -45,5 +46,23 @@ export const getStaticProps = async (ctx) => {
 		};
 	}
 };
-
+// export const getServerSideProps = async () => {
+// 	try {
+// 		const res = await fetch('http://localhost:3000/api/post');
+// 		const data = await res.json();
+// 		console.log('getting data', data);
+// 		return {
+// 			props: {
+// 				posts: JSON.stringify(data),
+// 			},
+// 		};
+// 	} catch (error) {
+// 		console.log('Db failed: ', error);
+// 		return {
+// 			props: {
+// 				posts: { heading: 'Cant find' },
+// 			},
+// 		};
+// 	}
+// };
 export default BlogList;
