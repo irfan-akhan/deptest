@@ -13,10 +13,7 @@ const postSchema = new Schema({
 		enum: ['draft', 'published'],
 		default: 'draft',
 	},
-	image: {
-		data: Buffer,
-		contentType: String,
-	},
+
 	postDescription: {
 		type: String,
 		require: true,
