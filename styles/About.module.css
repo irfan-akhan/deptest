@@ -1,0 +1,12 @@
+.container p {
+  font-size: 1.05rem;
+  color:#6f737b;
+}
+
+.container li {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #000000bf;
+  margin-bottom: 1rem;
+}
+/*# sourceMappingURL=About.module.css.map */

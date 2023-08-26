@@ -15,6 +15,11 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
+				<Image
+					src='/assets/images/shuttle.png'
+					width={300}
+					height={100}
+				/>
 				<h1>TEST with github integration</h1>
 			</main>
 		</div>
